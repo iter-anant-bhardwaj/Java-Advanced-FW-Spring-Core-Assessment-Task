@@ -1,0 +1,34 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Courses -->
+    <bean id="course1" class="com.capgemini.java_development.java_advance.framework.spring.core.Student_and_Course_Enrollment_System.entity.Course">
+        <property name="id" value="801"/>
+        <property name="courseName" value="DataStructures"/>
+        <property name="credits" value="4"/>
+    </bean>
+
+    <bean id="course2" class="com.capgemini.java_development.java_advance.framework.spring.core.Student_and_Course_Enrollment_System.entity.Course">
+        <property name="id" value="802"/>
+        <property name="courseName" value="DatabaseSystems"/>
+        <property name="credits" value="3"/>
+    </bean>
+
+    <!-- Student -->
+    <bean id="student" class="com.capgemini.java_development.java_advance.framework.spring.core.Student_and_Course_Enrollment_System.entity.Student">
+        <property name="id" value="701"/>
+        <property name="name" value="Arjun"/>
+
+        <!-- Many-to-Many -->
+        <property name="courses">
+            <set>
+                <ref bean="course1"/>
+                <ref bean="course2"/>
+            </set>
+        </property>
+    </bean>
+
+</beans>
