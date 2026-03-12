@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- bean definitions here -->
+	<bean id="student1"
+		class="com.capgemini.java_development.java_advance.framework.spring.core.School_and_Students_System.entity.Student">
+		<property name="id" value="101" />
+		<property name="name" value="Aman" />
+		<property name="grade" value="10" />
+	</bean>
+
+	<bean id="student2"
+		class="com.capgemini.java_development.java_advance.framework.spring.core.School_and_Students_System.entity.Student">
+		<property name="id" value="102" />
+		<property name="name" value="Neha" />
+		<property name="grade" value="9" />
+	</bean>
+
+	<bean id="school"
+		class="com.capgemini.java_development.java_advance.framework.spring.core.School_and_Students_System.entity.School">
+		<property name="id" value="401" />
+		<property name="name" value="BrightSchool" />
+		<property name="city" value="Jaipur" />
+		<!-- One-to-Many -->
+		<property name="students">
+			<list>
+				<ref bean="student1" />
+				<ref bean="student2" />
+			</list>
+		</property>
+	</bean>
+
+</beans>
