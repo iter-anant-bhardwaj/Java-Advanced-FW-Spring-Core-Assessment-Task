@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Courses -->
+    <bean id="course1" class="com.capgemini.java_development.java_advanced.framework.spring.core.University_Management_System.entity.Course">
+        <property name="id" value="501"/>
+        <property name="courseName" value="DataStructures"/>
+        <property name="credits" value="4"/>
+    </bean>
+
+    <bean id="course2" class="com.capgemini.java_development.java_advanced.framework.spring.core.University_Management_System.entity.Course">
+        <property name="id" value="502"/>
+        <property name="courseName" value="DatabaseSystems"/>
+        <property name="credits" value="3"/>
+    </bean>
+
+    <!-- Department -->
+    <bean id="department" class="com.capgemini.java_development.java_advanced.framework.spring.core.University_Management_System.entity.Department">
+        <property name="id" value="101"/>
+        <property name="name" value="ComputerScience"/>
+
+        <property name="courses">
+            <list>
+                <ref bean="course1"/>
+                <ref bean="course2"/>
+            </list>
+        </property>
+    </bean>
+
+    <!-- Student Profile (1:1) -->
+    <bean id="studentProfile" class="com.capgemini.java_development.java_advanced.framework.spring.core.University_Management_System.entity.StudentProfile">
+        <property name="id" value="301"/>
+        <property name="email" value="arjun@gmail.com"/>
+        <property name="phone" value="9876543210"/>
+    </bean>
+
+    <!-- Student -->
+    <bean id="student" class="com.capgemini.java_development.java_advanced.framework.spring.core.University_Management_System.entity.Student">
+        <property name="id" value="901"/>
+        <property name="name" value="Arjun"/>
+
+        <!-- 1:1 -->
+        <property name="profile" ref="studentProfile"/>
+
+        <!-- M:1 -->
+        <property name="department" ref="department"/>
+
+        <!-- M:M -->
+        <property name="courses">
+            <set>
+                <ref bean="course1"/>
+                <ref bean="course2"/>
+            </set>
+        </property>
+
+    </bean>
+
+
+</beans>
